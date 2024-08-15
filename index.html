@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Melanie">
+  <title>Even/Odd</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <script>
+    //variables
+    const numbers = [1, 2, 3, 4];
+    let wins = 0;
+    let loses = 0;
+    let invalid = 'true';
+
+    ///prompt name
+    let playerName = prompt("What is your name?");
+
+    while (true) {
+      //invalid input
+      if (playerName == null || playerName == "") {
+        alert("Invalid input. Try again.")
+        break;
+      }
+
+      //prompt player choice
+      let playerChoice = prompt(playerName + ", will the sum of the numbers be even or odd?")
+      if (playerChoice == null || playerChoice == "") {
+        alert("Invalid input. Try again.")
+        break;
+      }
+
+      //generate numbers
+      let number1 = (numbers[Math.floor(Math.random() * numbers.length)]);
+      let number2 = (numbers[Math.floor(Math.random() * numbers.length)]);
+
+      //add numbers
+      totalSum = number1 + number2;
+
+      //even or odd
+      if (totalSum % 2 == 0 && playerChoice.toLowerCase() == "even") {
+        alert(playerName + ", you chose " + playerChoice + ", the sum was " + totalSum + " which is an even number. You win!");
+        wins++;
+      } else if (totalSum % 2 != 0 && playerChoice.toLowerCase() == "even") {
+        alert(playerName + ", you chose " + playerChoice + ", the sum was " + totalSum + " which is an odd number. You lose.");
+        loses++;
+      } else if (totalSum % 2 == 0 && playerChoice.toLowerCase() == "odd") {
+        alert(playerName + ", you chose " + playerChoice + ", the sum was " + totalSum + " which is an even number. You lose.");
+        loses++;
+      } else if (totalSum % 2 != 0 && playerChoice.toLowerCase() == "odd") {
+        alert(playerName + ", you chose " + playerChoice + ", the sum was " + totalSum + " which is an odd number. You win!");
+        wins++;
+      }
+
+      //result and repeat prompt
+      let repeat = prompt("That's " + wins + " wins and " + loses + " losses!\nWould you like to play again? (Y/N)");
+      if (repeat.toLowerCase() == "n") {
+        break;
+      }
+
+    }
+
+
+  </script>
+</body>
+
+</html>
